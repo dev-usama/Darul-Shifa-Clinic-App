@@ -1,0 +1,80 @@
+{% extends "authentication_layout.html" %}
+{% block content2 %}
+
+<!--Javascript for Password Matching-->
+<script>
+    function myfunc() {
+        var fname = document.getElementById("first_name");
+        var lname = document.getElementById("last_name");
+        var email = document.getElementById("email");
+        var x = document.getElementById("exampleInputPassword1");
+        var y = document.getElementById("exampleInputPassword2");
+
+        if (fname == "" || lname == "" || email == "" || x == "" || y == "") {
+            prompt("Fill in all the fields");
+            return false;
+        }
+
+        if (x.value !== y.value) {
+            alert("Passwords don't match!");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<!--HTML-->
+<div class="container">
+
+    <form method="POST" onsubmit="return myfunc();" action="{{ url_for('verify') }}">
+
+        <!--First Name-->
+        <div class="mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" id="fname" aria-describedby="emailHelp">
+        </div>
+
+        <!--Last Name-->
+        <div class="mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" id="lname" aria-describedby="emailHelp">
+        </div>
+
+        <!--Date of birth-->
+        <div class="mb-3">
+            <label for="birthdate" class="form-label">Birth date:</label>
+            <input type="date" id="birthdate" name="birthdate"><br>
+        </div>
+        <!--Email-->
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+
+        <!--Password-->
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+
+        <!--Re-enter Password-->
+        <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label"> Re-enter Password</label>
+            <input type="password" name="password2" class="form-control" id="exampleInputPassword2">
+        </div>
+
+        <!--Checkbox for password visibility-->
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" onchange="togglePassword()">
+            <label class="form-check-label" for="exampleCheck1">Show Password</label>
+        </div>
+
+        <!--Register Button-->
+        <button type="submit" class="btn btn-primary">Register</button>
+
+        <!--Login link-->
+        <a href="{{ url_for('login') }}" class="underline-none">Log in</a>
+    </form>
+</div>
+{% endblock content2 %}

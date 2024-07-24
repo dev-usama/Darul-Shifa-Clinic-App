@@ -1,0 +1,12 @@
+{% extends "authentication_layout.html" %}
+{% block content2 %}
+
+<div class="container d-flex justify-content-center">
+    <button class="btn btn-lg bg-info m-5">
+        <a class="text-dark text-decoration-none" href="{{ url_for('login')}}">Login</a>
+    </button><br>
+    <button class="btn btn-lg bg-info m-5">
+        <a class="text-dark text-decoration-none" href="{{ url_for('register')}}">Register</a>
+    </button>
+</div>
+{% endblock content2 %}
