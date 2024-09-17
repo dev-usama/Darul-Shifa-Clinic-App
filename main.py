@@ -11,7 +11,7 @@ def get_db_connection():
         host="localhost",
         database="DarulShifaClinic",
         user="postgres",
-        password="FlaskDev11001"
+        password="..."
     )
     return conn
 
